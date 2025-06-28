@@ -6,8 +6,6 @@ nav_order: 2
 
 # ERD диаграмма
 
-[[TOC]]
-
 ## Диграмма
 
 ```mermaid
