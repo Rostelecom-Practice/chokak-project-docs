@@ -1,19 +1,4 @@
-<script>
-  window.mermaid = {
-    startOnLoad: false,
-    theme: 'default'
-  };
-</script>
-<script src="/assets/js/mermaid.min.js"></script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    if (typeof mermaid !== 'undefined') {
-      console.log('Mermaid found');
-      mermaid.initialize({ startOnLoad: true });
-      mermaid.run();
-    } else {
-      console.error('Mermaid not found');
-    }
-  });
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
 </script>

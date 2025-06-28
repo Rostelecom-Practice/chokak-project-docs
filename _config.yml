@@ -28,4 +28,6 @@ kramdown:
 
 search_enabled: true
 dark_theme: false
-mermaid: true
+
+just_the_docs:
+  html_head: docs/_includes/head_custom.html
