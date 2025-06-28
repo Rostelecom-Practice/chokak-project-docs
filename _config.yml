@@ -1,0 +1,21 @@
+title: Документация агрегатора отзывов
+remote_theme: pmarsceill/just-the-docs
+theme: just-the-docs
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
+markdown: GFM
+plugins:
+  - jekyll-seo-tag
+  - just-the-docs
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
