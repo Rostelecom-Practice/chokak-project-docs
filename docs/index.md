@@ -12,3 +12,4 @@ nav_order: 1
 
 - [Архитектура системы](analytics/system_architecture.md)
 - [ERD диаграмма](analytics/erd_diagram.md)
+- [DFD диаграмма](analytics/dfd_diagram.md)
