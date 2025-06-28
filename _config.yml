@@ -19,3 +19,13 @@ exclude:
   - Gemfile.lock
   - node_modules
   - vendor
+
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+search_enabled: true
+dark_theme: false
+mermaid: true
