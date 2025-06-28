@@ -14,3 +14,4 @@ nav_order: 1
 - [ERD диаграмма](analytics/erd_diagram.md)
 - [DFD диаграмма](analytics/dfd_diagram.md)
 - [Бизнес и системный анализ MVP](analytics/bussiness_and_system_analytics.md)
+- [Требования для разрабатываемой системы](analytics/structured_demands.md)
