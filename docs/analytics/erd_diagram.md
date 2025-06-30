@@ -8,105 +8,7 @@ nav_order: 2
 
 ## Диграмма
 
-```mermaid
-erDiagram
-
-    cities ||--o{ streets : "has many"
-
-    streets ||--o{ buildings : "has many"
-
-    buildings ||--o{ organizations : "has one"
-
-    organizations ||--o{ reviews : "has many"
-
-    reviews ||--o{ review_reactions : "has many"
-
-    cities {
-
-        id integer PK
-
-        name string
-
-    }
-
-    streets {
-
-        id integer PK
-
-        city_id integer FK
-
-        name string
-
-    }
-
-    buildings {
-
-        id integer PK
-
-        street_id integer FK
-
-        number string
-
-    }
-
-    organizations {
-
-        id integer PK
-
-        city_id integer FK
-
-        street_id integer FK
-
-        building_id integer FK
-
-        name string
-
-        type string
-
-        image_url string
-
-    }
-
-    reviews {
-
-        id integer PK
-
-        author_id integer FK
-
-        source_id integer FK
-
-        organization_id integer FK
-
-        parent_review_id integer FK
-
-        title string
-
-        content string
-
-        published_at datetime
-
-        rating integer
-
-        image_url string
-
-    }
-
-    review_reactions {
-
-        id integer PK
-
-        review_id integer FK
-
-        user_id integer FK
-
-        reaction_type string
-
-        value string
-
-        created_at datetime
-
-    }
-```
+![erd](images/erd.png)
 
 ## Описание ERD
 
@@ -114,10 +16,10 @@ erDiagram
 
 ### Сущности и связи
 
-#### 1. **Города (`cities`)**
+#### 1. Города (`cities`)
 
 Содержит информацию о городах.  
-**Поля:**
+Поля:
 
 - `id` — уникальный идентификатор города.
 - `name` — наименование города.
@@ -126,10 +28,10 @@ erDiagram
 
 ---
 
-#### 2. **Улицы (`streets`)**
+#### 2. Улицы (`streets`)
 
 Хранит данные об улицах.  
-**Поля:**
+Поля:
 
 - `id` — уникальный идентификатор улицы.
 - `city_id` — ссылка на идентификатор города.
@@ -139,10 +41,10 @@ erDiagram
 
 ---
 
-#### 3. **Здания (`buildings`)**
+#### 3. Здания (`buildings`)
 
 Содержит информацию о зданиях.  
-**Поля:**
+Поля:
 
 - `id` — уникальный идентификатор здания.
 - `street_id` — ссылка на идентификатор улицы.
@@ -152,15 +54,15 @@ erDiagram
 
 ---
 
-#### 4. **Организации (`organizations`)**
+#### 4. Организации (`organizations`)
 
 Хранит данные о компаниях или заведениях.  
-**Поля:**
+Поля:
 
 - `id` — уникальный идентификатор организации (UUID).
 - `name` — наименование организации.
 - `city_id` — ссылка на город (опционально).
-- `type` — тип организации.
+- `type` — тип организации. (enum: RESTAURANTS_AND_CAFES, CINEMA_AND_CONCERTS, PARKS_AND_MUSEUMS, SHOPPING_AND_STORES, HOTELS_AND_HOSTELS)
 - `address` — адрес.
 - `image_url` — ссылка на изображение (опционально).
 
@@ -168,14 +70,14 @@ erDiagram
 
 ---
 
-#### 5. **Отзывы (`reviews`)**
+#### 5. Отзывы (`reviews`)
 
 Содержит пользовательские отзывы об организациях.  
-**Поля:**
+Поля:
 
 - `id` — уникальный идентификатор отзыва.
-- `author` — автор отзыва.
-- `source` — источник отзыва.
+- `author` — автор отзыва. (Идентификатор пользователя, полученный от Firebase (x-user-uid  (он же localId)), преобразуется с помощью алгоритма md5. Полученный md5-хеш далее используется для создания UUID. )
+- `source` — источник отзыва.  источник отзыва (имеется H2 база данных в external service example, которую можно модифицировать и сохранять на диск (как в cloud server)).
 - `organization_id` — ссылка на организацию.
 - `title` — заголовок отзыва.
 - `text` — текст отзыва.
@@ -184,19 +86,19 @@ erDiagram
 - `image_url` — ссылка на изображение (опционально).
 - `parent_review_id` — ссылка на родительский отзыв (реализует древовидную структуру комментариев).
 
-Отзыв привязан к одной организации. Возможно наличие цепочки ответов на отзыв через поле `parent_review_id`.
+Отзыв привязан к одной организации. Возможно наличие цепочки ответов на отзыв через поле parent_review_id.
 
 ---
 
-#### 6. **Реакции на отзывы (`review_reactions`)**
+#### 6. Реакции на отзывы (`review_reactions`)
 
 Хранит пользовательские реакции на отзывы.  
-**Поля:**
+Поля:
 
 - `id` — уникальный идентификатор реакции.
 - `review_id` — ссылка на отзыв.
 - `user_id` — идентификатор пользователя.
-- `reaction_type` — тип реакции.
+- `reaction_type` — тип реакции. (enum: LIKE, DISLIKE, EMOJI).
 - `value` — значение реакции.
 - `created_at` — дата создания.
 

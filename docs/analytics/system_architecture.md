@@ -82,20 +82,7 @@ nav_order: 2
 4. БД возвращает информацию об организации.
 5. Chokak Server формирует ответ и отправляет его обратно через гейтвей клиенту.
 
-```mermaid
-sequenceDiagram
-    participant Client as Клиент
-    participant Gateway as API Gateway
-    participant Server as Chokak Server
-    participant DB as База данных
-
-    Client->>Gateway: GET /organization/{id}
-    Gateway->>Server: Перенаправляет запрос на Chokak Server
-    Server->>DB: Запрашивает данные об организации
-    DB-->>Server: Возвращает данные об организации
-    Server-->>Gateway: Формирует и отправляет ответ
-    Gateway-->>Client: Возвращает данные клиенту
-```
+![Сценарий 1](images/scene1.png)
 
 #### Сценарий: Получение списка отзывов по организации
 
@@ -105,17 +92,4 @@ sequenceDiagram
 4. Chokak Server формирует структурированный список отзывов.
 5. Ответ отправляется клиенту через гейтвей.
 
-```mermaid
-sequenceDiagram
-    participant Client as Клиент
-    participant Gateway as API Gateway
-    participant Server as Chokak Server
-    participant DB as База данных
-
-    Client->>Gateway: GET /organization/{id}
-    Gateway->>Server: Перенаправляет запрос
-    Server->>DB: Запрашивает данные об организации
-    DB-->>Server: Возвращает данные
-    Server-->>Gateway: Формирует ответ
-    Gateway-->>Client: Отправляет клиенту
-```
+![Сценарий 2](images/scene2.png)
