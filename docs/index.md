@@ -17,6 +17,7 @@ nav_order: 1
 - [Требования для разрабатываемой системы](analytics/structured_demands.md)
 - [Дальнейшее развитие проекта](analytics/further_development.md)
 - [Ответы на вопросы](analytics/answers.md)
+- [Отчет о тестировании](analytics/test_report.md)
 
 ## Обновление от 30.06.2025
 
